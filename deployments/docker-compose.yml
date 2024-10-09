@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ../frontend
+    ports:
+      - "3000:80"  # Adjust if using a different port for frontend
+    depends_on:
+      - backend  # Ensure backend starts before frontend
+
+  backend:
+    build:
+      context: ../backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ../.env  # Path to your .env file in the root directory
